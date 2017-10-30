@@ -19,7 +19,7 @@ into the {body} of the default.hbs template --}}
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                    <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD.M.YYYY"}}</time>
                     {{#primary_tag}}
                         <span class="date-divider">/</span> <a href="{{url}}">{{name}}</a>
                     {{/primary_tag}}
@@ -36,46 +36,31 @@ into the {body} of the default.hbs template --}}
                 {{content}}
             </section>
 
-            {{!-- Email subscribe form at the bottom of the page --}}
+            {{!-- Email subscribe form at the bottom of the page 
             {{#if @labs.subscribers}}
             <section class="subscribe-form">
-                <h3 class="subscribe-form-title">Subscribe to {{@blog.title}}</h3>
-                <p>Get the latest posts delivered right to your inbox</p>
+                <h3 class="subscribe-form-title">Подписывайтесь на рассылку {{@blog.title}}</h3>
+                <p>Получайте один раз в неделю дайджест самых читаемых статей</p>
                 {{subscribe_form placeholder="youremail@example.com"}}
             </section>
-            {{/if}}
+            {{/if}}--}}
 
             <footer class="post-full-footer">
-                {{!-- Everything inside the #author tags pulls data from the author --}}
-                {{#author}}
+                           
 
                 <section class="author-card">
-                    {{#if profile_image}}
-                        <img class="author-profile-image" src="{{profile_image}}" alt="{{name}}" />
-                    {{/if}}
+                   
                     <section class="author-card-content">
-                        <h4 class="author-card-name"><a href="{{url}}">{{name}}</a></h4>
-                        {{#if bio}}
-                            <p>{{bio}}</p>
-                        {{else}}
-                            <p>Read <a href="{{url}}">more posts</a> by this author.</p>
-                        {{/if}}
+                        <h4 class="author-card-name">Теги: {{tags from="2"}}</h4>
+                            
                     </section>
                 </section>
-                <div class="post-full-footer-right">
-                    <a class="author-card-button" href="{{url}}">Read More</a>
-                </div>
-
-                {{/author}}
+            
+               
             </footer>
 
-            {{!--
-
-            If you use Disqus comments, just uncomment this block.
-            The only thing you need to change is "test-apkdzgmqhj" - which
-            should be replaced with your own Disqus site-id.
-
-            <section class="post-full-comments">
+  {{!--         
+ <section class="post-full-comments">
                 <div id="disqus_thread"></div>
                 <script>
                     var disqus_config = function () {
@@ -84,14 +69,21 @@ into the {body} of the default.hbs template --}}
                     };
                     (function() {
                         var d = document, s = d.createElement('script');
-                        s.src = 'https://test-apkdzgmqhj.disqus.com/embed.js';
+                        s.src = 'https://tuzemun.disqus.com/embed.js';
                         s.setAttribute('data-timestamp', +new Date());
                         (d.head || d.body).appendChild(s);
                     })();
                 </script>
-            </section>
-            --}}
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </section>--}}
 
+                  
+
+            
+
+
+            
+            
         </article>
 
     </div>
@@ -101,7 +93,7 @@ into the {body} of the default.hbs template --}}
 <aside class="read-next outer">
     <div class="inner">
         <div class="read-next-feed">
-            {{#if primary_tag}}
+
             {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
                 {{#if related_posts}}
                 <article class="read-next-card"
@@ -127,12 +119,11 @@ into the {body} of the default.hbs template --}}
                         </ul>
                     </div>
                     <footer class="read-next-card-footer">
-                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}} →</a>
+                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='Нет похожих' singular='Смотреть все (%)' plural='Смотреть все (%)'}} →</a>
                     </footer>
                 </article>
                 {{/if}}
             {{/get}}
-            {{/if}}
 
             {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
             {{#next_post}}
@@ -148,10 +139,19 @@ into the {body} of the default.hbs template --}}
     </div>
 </aside>
 
+
+
 {{!-- Floating header which appears on-scroll, included from includes/floating-header.hbs --}}
 {{> floating-header}}
 
+
+
+
+
 {{/post}}
+
+  
+
 
 {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
 {{#contentFor "scripts"}}

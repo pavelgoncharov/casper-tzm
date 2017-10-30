@@ -7,6 +7,7 @@
     <div class="post-card-content">
         <a class="post-card-content-link" href="{{url}}">
             <header class="post-card-header">
+                <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD.M.YYYY"}}</time>
                 {{#if primary_tag}}
                     <span class="post-card-tags">{{primary_tag.name}}</span>
                 {{/if}}
@@ -20,7 +21,7 @@
             {{#if author.profile_image}}
                 <img class="author-profile-image" src="{{author.profile_image}}" alt="{{author.name}}" />
             {{/if}}
-            <span class="post-card-author">{{author}}</span>
+            <span class="post-card-author">{{tags from="2"}}</span>
         </footer>
     </div>
 </article>

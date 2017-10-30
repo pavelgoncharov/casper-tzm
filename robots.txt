@@ -1,0 +1,4 @@
+User-Agent: *
+Sitemap: https://tzm.io/sitemap.xml
+Disallow: /ghost/
+Host: https://tzm.io

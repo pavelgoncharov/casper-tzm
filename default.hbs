@@ -14,7 +14,7 @@
     {{!-- Styles'n'Scripts --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
 
-    {{!-- This tag outputs SEO meta+structured data and other important settings --}}
+    {{!-- This tag outputes SEO meta+structured data and other important settings --}}
     {{ghost_head}}
 
 </head>
@@ -28,12 +28,17 @@
         {{!-- The footer at the very bottom of the screen --}}
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
+                <section class="copyright">Copyright <a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}
+                <br/><br/>
+                    Любое использование либо копирование текстовых либо графических материалов сайта, элементов дизайна и оформления допускается лишь с указанием названия сайта и только c активной гиперссылкой на источник &mdash; страницу с этой публикацией на tzm.io. 
+                    <br/><br/>
+                </section>
                 <nav class="site-footer-nav">
-                    <a href="{{@blog.url}}">Latest Posts</a>
-                    {{#if @blog.facebook}}<a href="{{facebook_url @blog.facebook}}" target="_blank" rel="noopener">Facebook</a>{{/if}}
-                    {{#if @blog.twitter}}<a href="{{twitter_url @blog.twitter}}" target="_blank" rel="noopener">Twitter</a>{{/if}}
-                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                    <a href="{{@blog.url}}/about">О сайте</a>
+                    <a href="{{@blog.url}}/useragreement">Пользовательское соглашение</a>
+                    {{#if @blog.facebook}}<a href="{{facebook_url @blog.facebook}}" target="_blank">Facebook</a>{{/if}}
+                    {{#if @blog.twitter}}<a href="{{twitter_url @blog.twitter}}" target="_blank">Twitter</a>{{/if}}
+                    
                 </nav>
             </div>
         </footer>
@@ -48,8 +53,8 @@
             {{#if @blog.logo}}
                 <img class="subscribe-overlay-logo" src="{{@blog.logo}}" alt="{{@blog.title}}" />
             {{/if}}
-            <h1 class="subscribe-overlay-title">Subscribe to {{@blog.title}}</h1>
-            <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+            <h1 class="subscribe-overlay-title">Подписывайтесь на {{@blog.title}}</h1>
+            <p class="subscribe-overlay-description">Получайте один раз в неделю дайджест самых читаемых статей</p>
             {{subscribe_form placeholder="youremail@example.com"}}
         </div>
     </div>
